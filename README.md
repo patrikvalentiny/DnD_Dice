@@ -1,6 +1,6 @@
-#DnD_Dice
+# DnD_Dice
 
-##My first ever programming project 
+## My first ever programming project 
 
 It simulates dice in Dungeons and Dragons and includes choice of dice and also number of throws
 
