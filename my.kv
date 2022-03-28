@@ -1,0 +1,364 @@
+#:kivy 2.0.0
+mainWindow:
+
+
+#<Button>
+    #background_normal: ''
+    #background_color: (59 / 255, 66 / 255, 82 / 255, 1) if self.state == 'normal' else (76 / 255, 86 / 255, 106 / 255, 1)
+    #color: 216 / 255, 222 / 255, 233 / 255, 1
+
+<RoundedButton@Button>
+    background_color: (0,0,0,0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgb: (59 / 255, 66 / 255, 82 / 255, 1) if self.state == 'normal' else (76 / 255, 86 / 255, 106 / 255, 1)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [22]
+
+<historyLabel@Label>
+    text:''
+    size_hint:(0.9, 0.1)
+    color: (216 / 255, 222 / 255, 233 / 255, 1)
+    text_size: self.size
+    font_size: self.height - 32
+    halign: 'center'
+
+<sizeButton@RoundedButton>
+    size_hint: (0.2, 0.1)
+    font_size: self.height - 20
+    text_size: self.size
+    halign: 'center'
+    valign: 'center'
+
+<mainWindow>
+    name: 'main'
+    size: 1920, 1080
+    rollButton: rollButton
+    mainText: mainText
+    diceCountVar: diceCountVar
+    menuButton: menuButton
+    menuImage:menuImage
+    diceMenu:diceMenu
+    menuImage1:menuImage1
+    historyMenu:historyMenu
+    xImage:xImage
+    xImage1:xImage1
+    #closeImage:closeImage
+    historyButton: historyButton
+    historyLabel1: historyLabel1
+    historyLabel2: historyLabel2
+    historyLabel3: historyLabel3
+    historyLabel4: historyLabel4
+    historyLabel5: historyLabel5
+    historyLabel6: historyLabel6
+    historyLabel7: historyLabel7
+    historyLabel8: historyLabel8
+    historyLabel9: historyLabel9
+    historyLabel10: historyLabel10
+    minusImage:minusImage
+    plusImage:plusImage
+    FloatLayout:
+        size: root.size
+
+        RoundedButton:
+            id: rollButton
+            text:'Hoď 1xD20'
+            text_size: (self.width, None)
+            halign:'center'
+            valign:'center'
+            multiline: False
+            size_hint: (0.45, 0.1)
+            font_size: self.height #i f self.height <
+            pos_hint: {'center_x':0.5, 'center_y':0.85}
+            on_press: root.rollButton_dwn()
+
+        Label:
+            color: root.nord4
+            id: mainText
+            text:''
+            font_size: rollButton.font_size
+            text_size: (self.width, self.height)
+            halign:'center'
+            valign:'top'
+            size_hint: (0.5, 0.8)
+            pos_hint: {'center_x':0.5, 'top': 0.8}
+
+        Button:
+            id: menuButton
+            text: ''
+            size_hint: (0.1, 0.1)
+            pos_hint: {'center_x':0.05, 'center_y':0.9}
+            background_color:46 / 255, 52 / 255, 64 / 255, 0
+            background_normal:''
+            disabled: False
+            on_press:root.menuButton_down()
+            on_release: root.menuButton_up()
+            Image:
+                id: menuImage
+                source: 'Icons/diceButton_white.png'
+                center: self.parent.center
+                allow_stretch: True
+                keep_ratio: False
+                size_hint_x: None
+                size_hint_y: None
+                height: self.parent.height
+                width: self.parent.height
+
+        Button:
+            id: historyButton
+            text: ''
+            size_hint: (0.1, 0.1)
+            pos_hint: {'center_x':0.95, 'center_y':0.9}
+            background_color:46 / 255, 52 / 255, 64 / 255, 0
+            background_normal:''
+            disabled: False
+            on_press:root.historyButton_down()
+            on_release: root.historyButton_up()
+            Image:
+                id: menuImage1
+                source: 'Icons/historyButton_white.png'
+                center: self.parent.center
+                allow_stretch: True
+                keep_ratio: False
+                size_hint_x: None
+                size_hint_y: None
+                height: self.parent.height
+                width: self.parent.height
+
+    FloatLayout:
+        id: diceMenu
+        size: (root.size)
+        pos_hint: {'x': 1}
+        canvas.before:
+            Color:
+                rgba:(46 / 255, 52 / 255, 64 / 255, 1)
+                #rgba:(1,0,0,1)
+            Rectangle:
+                size: self.width - root.width * 0.68, self.parent.height
+                pos: self.pos
+            Color:
+                rgba:(0,0,0,0.8)
+            Rectangle:
+                size: root.width - root.width * 0, self.parent.height
+                pos: (self.x + root.width * 0.32 , self.y)
+            Color:
+                #rgba:(216 / 255, 222 / 255, 233 / 255, 1)
+                rgba:(1,1,1,1)
+            Rectangle:
+                source:'Icons/d20Icon.png'
+                size:(self.width*0.06,self.width*0.06)
+                pos:(self.x+self.width*0.24,self.height*0.8)
+            Rectangle:
+                source:'Icons/d12Icon.png'
+                size:(self.width*0.06,self.width*0.06)
+                pos:(self.x+self.width*0.24,self.height*0.68)
+            Rectangle:
+                source:'Icons/d10Icon.png'
+                size:(self.width*0.06,self.width*0.06)
+                pos:(self.x+self.width*0.24,self.height*0.56)
+            Rectangle:
+                source:'Icons/d8Icon.png'
+                size:(self.width*0.06,self.width*0.06)
+                pos:(self.x+self.width*0.24,self.height*0.44)
+            Rectangle:
+                source:'Icons/d6Icon.png'
+                size:(self.width*0.06,self.width*0.06)
+                pos:(self.x+self.width*0.24,self.height*0.32)
+            Rectangle:
+                source:'Icons/d4Icon.png'
+                size:(self.width*0.06,self.width*0.06)
+                pos:(self.x+self.width*0.24,self.height*0.2)
+
+        Button:
+            id: xButton
+            text: ''
+            size_hint: (0.1, 0.1)
+            pos_hint: {'x':0.25, 'y':0.9}
+            background_color:46 / 255, 52 / 255, 64 / 255, 0
+            background_normal:''
+            on_press:root.diceCloseButton_down()
+            on_release: root.diceCloseButton_up()
+            Image:
+                id: xImage
+                source: 'Icons/xButton_white.png'
+                center: self.parent.center
+                allow_stretch: True
+                keep_ratio: False
+                size_hint_x: None
+                size_hint_y: None
+                height: self.parent.height
+                width: self.parent.height
+        Label:
+            id:vyberkocky
+            text:'Výber kocky'
+            color: root.nord4
+            text_size: (d20Button.width*2, d20Button.height)
+            font_size: historyLabel1.font_size + 15
+            halign: 'center'
+            pos_hint: {'center_x':0.13, 'center_y':0.95}
+
+        sizeButton:
+            id: d20Button
+            text: 'D20'
+            pos_hint: {'center_x':0.13, 'y':0.8}
+            on_press: root.diceSize(20)
+
+        sizeButton:
+            id: d12Button
+            text: 'D12'
+            pos_hint: {'center_x':0.13, 'y':0.68}
+            on_press: root.diceSize(12)
+
+        sizeButton:
+            id: d10Button
+            text: 'D10'
+            pos_hint: {'center_x':0.13, 'y':0.56}
+            on_press: root.diceSize(10)
+
+        sizeButton:
+            id: d8Button
+            text: 'D8'
+            pos_hint: {'center_x':0.13, 'y':0.44}
+            on_press: root.diceSize(8)
+
+        sizeButton:
+            id: d6Button
+            text: 'D6'
+            pos_hint: {'center_x':0.13, 'y':0.32}
+            on_press: root.diceSize(6)
+
+        sizeButton:
+            id: d4Button
+            text: 'D4'
+            pos_hint: {'center_x':0.13, 'y':0.20}
+            on_press: root.diceSize(4)
+
+        Label:
+            text: 'Počet kociek'
+            color: root.nord4
+            text_size: (d20Button.width*2, d20Button.height)
+            font_size: historyLabel1.font_size + 5
+            halign: 'center'
+            pos_hint: {'center_x':0.13, 'center_y':0.17}
+
+        Button:
+            size_hint: (0.05, 0.05)
+            pos_hint: {'center_x':0.2, 'center_y': 0.07}
+            background_color:(0,0,0,0)
+            on_press:root.plusButton_down()
+            on_release:root.plusButton_up()
+            Image:
+                id: plusImage
+                source: 'Icons/plusButton.png'
+                size:self.parent.size
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+        Button:
+            size_hint: (0.05, 0.05)
+            pos_hint: {'center_x':0.06, 'center_y': 0.07}
+            background_color:(0,0,0,0)
+            on_press:root.minusButton_down()
+            on_release:root.minusButton_up()
+            Image:
+                id: minusImage
+                source: 'Icons/minusButton.png'
+                size:self.parent.size
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+
+
+        Label:
+            id: diceCountVar
+            text: '1'
+            size_hint: (0.1, 0.1)
+            pos_hint: {'center_x': 0.13, 'center_y': 0.07}
+            background_color: root.nord4
+            multiline: False
+            border:(0,0,0,0)
+            halign: 'center'
+            valign: 'center'
+            #foreground_color: 216 / 255, 222 / 255, 233 / 255, 1
+            #selection_color: 76 / 255, 86 / 255, 106 / 255, 0.8
+            #cursor_color: 236 / 255, 239 / 255, 244 / 255, 1
+            #input_type: 'number'
+            #hint_text: 'Počet kociek'
+            #input_filter: 'int'
+            font_size: self.height - 20
+            #on_touch_down: self.hint_text: ''
+    FloatLayout:
+        id: historyMenu
+        size_hint: (0.3, 1)
+        #pos_hint: {'x': 0.7}
+        pos_hint: {'x': 1}
+        canvas.before:
+            Color:
+                rgba:(46 / 255, 52 / 255, 64 / 255, 1)
+                #rgba:(1,0,0,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+            Color:
+                rgba:(0,0,0,0) if self.pos_hint == {'x':1} else (0,0,0,0.8)
+            Rectangle:
+                size: root.width - root.width * 0.3, self.parent.height
+                pos: (0,0)
+        Button:
+            id: xButton
+            text: ''
+            size_hint: (0.1, 0.1)
+            pos_hint: {'x':0.05, 'y':0.9}
+            background_color:46 / 255, 52 / 255, 64 / 255, 0
+            background_normal:''
+            on_press:root.diceCloseButton_down()
+            on_release: root.diceCloseButton_up()
+            Image:
+                id: xImage1
+                source: 'Icons/xButton_white.png'
+                center: self.parent.center
+                allow_stretch: True
+                keep_ratio: False
+                size_hint_x: None
+                size_hint_y: None
+                height: self.parent.height
+                width: self.parent.height
+        Label:
+            text:'História:'
+            color: root.nord4
+            text_size: d20Button.size
+            font_size: historyLabel1.font_size + 15
+            halign: 'center'
+            pos_hint: {'center_x':0.5, 'center_y':0.95}
+
+        historyLabel:
+            id:historyLabel1
+            pos_hint: {'center_x':0.5, 'center_y':0.87 }
+        historyLabel:
+            id:historyLabel2
+            pos_hint: {'center_x':0.5, 'center_y':0.79 }
+        historyLabel:
+            id:historyLabel3
+            pos_hint: {'center_x':0.5, 'center_y':0.71 }
+        historyLabel:
+            id:historyLabel4
+            pos_hint: {'center_x':0.5, 'center_y':0.63 }
+        historyLabel:
+            id:historyLabel5
+            pos_hint: {'center_x':0.5, 'center_y':0.55 }
+        historyLabel:
+            id:historyLabel6
+            pos_hint: {'center_x':0.5, 'center_y':0.47 }
+        historyLabel:
+            id:historyLabel7
+            pos_hint: {'center_x':0.5, 'center_y':0.39 }
+        historyLabel:
+            id:historyLabel8
+            pos_hint: {'center_x':0.5, 'center_y':0.31 }
+        historyLabel:
+            id:historyLabel9
+            pos_hint: {'center_x':0.5, 'center_y':0.23}
+        historyLabel:
+            id:historyLabel10
+            pos_hint: {'center_x':0.5, 'center_y':0.15}
