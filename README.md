@@ -10,3 +10,6 @@ Kivy python module is required to run this program
 
 ### Main Page
 ![Main Page](/Screenshots/Main_page.png?raw=true "Main Page")
+
+### Main Page with multiple dice throws
+![Main page with multiple dice throws](/Screenshots/Main_page_with_multiple_dice_throws.png?raw=true "Main_page_with_multiple_dice_throws")
