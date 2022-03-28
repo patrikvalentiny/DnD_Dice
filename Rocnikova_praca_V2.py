@@ -39,7 +39,7 @@ class mainWindow(Screen):
     plusImage = ObjectProperty(None)
 
     diceCount = 1
-    historyList = ['', '', '', '', '', '', '', '', '', '']
+    historyList = ['' for i in range(10)]
     nord0 = (46 / 255, 52 / 255, 64 / 255, 1)
     nord1 = (59 / 255, 66 / 255, 82 / 255, 1)
     nord2 = (67 / 255, 76 / 255, 94 / 255, 1)
@@ -110,7 +110,7 @@ class mainWindow(Screen):
             return count
 
     def plusButton_down(self):
-        self.plusImage.source = 'plusButton_down.png'
+        self.plusImage.source = 'Icons/plusButton_down.png'
 
     def plusButton_up(self):
         if self.diceCountVar.text == '':
@@ -118,10 +118,10 @@ class mainWindow(Screen):
         elif float(self.diceCountVar.text) < 15:
             self.diceCountVar.text = str(int(self.diceCountVar.text) + 1)
             self.rollButton.text = 'Hoď ' + str(self.diceCount()) + 'xD' + str(size)
-        self.plusImage.source = 'plusButton.png'
+        self.plusImage.source = 'Icons/plusButton.png'
 
     def minusButton_down(self):
-        self.minusImage.source = 'minusButton_down.png'
+        self.minusImage.source = 'Icons/minusButton_down.png'
 
     def minusButton_up(self):
         if self.diceCountVar.text == '':
@@ -129,27 +129,27 @@ class mainWindow(Screen):
         elif 1 < float(self.diceCountVar.text) <= 20:
             self.diceCountVar.text = str(int(self.diceCountVar.text) - 1)
             self.rollButton.text = 'Hoď ' + str(self.diceCount()) + 'xD' + str(size)
-        self.minusImage.source = 'minusButton.png'
+        self.minusImage.source = 'Icons/minusButton.png'
 
     def historyButton_down(self):
-        self.menuImage1.source = 'historyButton.png'
+        self.menuImage1.source = 'Icons/historyButton.png'
 
     def historyButton_up(self):
-        self.menuImage1.source = 'historyButton_white.png'
+        self.menuImage1.source = 'Icons/historyButton_white.png'
         self.historyMenu.pos_hint = {'x': 0.7}
         self.menuButton.disabled = True
 
     def menuButton_up(self):
-        self.menuImage.source = 'diceButton_white.png'
+        self.menuImage.source = 'Icons/diceButton_white.png'
         self.diceMenu.pos_hint = {'x': 0}
         self.historyButton.disabled = True
 
     def menuButton_down(self):
-        self.menuImage.source = 'diceButton.png'
+        self.menuImage.source = 'Icons/diceButton.png'
 
     def diceCloseButton_up(self):
-        self.xImage.source = 'xButton_white.png'
-        self.xImage1.source = 'xButton_white.png'
+        self.xImage.source = 'Icons/xButton_white.png'
+        self.xImage1.source = 'Icons/xButton_white.png'
         self.diceMenu.pos_hint = {'x': 1}
         self.historyMenu.pos_hint = {'x': 1}
         self.menuButton.disabled = False
@@ -160,14 +160,14 @@ class mainWindow(Screen):
             self.rollButton.text = 'Hoď ' + str(self.diceCount()) + 'xD' + str(size)
 
     def diceCloseButton_down(self):
-        self.xImage.source = 'xButton.png'
-        self.xImage1.source = 'xButton.png'
+        self.xImage.source = 'Icons/xButton.png'
+        self.xImage1.source = 'Icons/xButton.png'
 
     def closeButton(self):
         Window.close()
 
     def closeButton_down(self):
-        self.closeImage.source = 'closeButton_down.png'
+        self.closeImage.source = 'Icons/closeButton_down.png'
 
 
 kv = Builder.load_file('my.kv')
